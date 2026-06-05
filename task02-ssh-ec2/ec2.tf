@@ -1,11 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "6.17.0"
-    }
-  }
-}
 data "aws_vpc" "main" {
   filter {
     name   = "tag:Name"
@@ -23,7 +15,7 @@ data "aws_subnet" "public" {
     values = ["true"]
   }
   filter {
-    name = "availabilityZone"
+    name   = "availabilityZone"
     values = ["eu-west-1a"]
   }
 }
