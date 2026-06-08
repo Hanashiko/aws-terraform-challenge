@@ -1,0 +1,9 @@
+aws_region           = "eu-west-1"
+project_id           = "cmtr-mxb1qv4h"
+vpc_id               = "vpc-094f37cdf6d60750d"
+public_instance_id   = "i-065ea68c98018a539"
+private_instance_id  = "i-038ef85828124f35d"
+ssh_sg_name          = "cmtr-mxb1qv4h-ssh-sg"
+public_http_sg_name  = "cmtr-mxb1qv4h-public-http-sg"
+private_http_sg_name = "cmtr-mxb1qv4h-private-http-sg"
+allowed_ip_range     = ["18.153.146.156/32", "46.63.95.155/32"]
