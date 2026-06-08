@@ -28,7 +28,7 @@ output "internet_gateway_id" {
   value       = aws_internet_gateway.main.id
 }
 
-output "route_table_id" {
+output "routing_table_id" {
   description = "ID of the public route table"
   value       = aws_route_table.public.id
 }
