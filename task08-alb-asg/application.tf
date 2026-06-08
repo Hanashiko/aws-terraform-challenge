@@ -26,7 +26,7 @@ data "aws_subnets" "public" {
   }
 
   filter {
-    name = "map-public-ip-on-launch"
+    name   = "map-public-ip-on-launch"
     values = ["true"]
   }
 }
@@ -132,11 +132,11 @@ resource "aws_autoscaling_group" "main" {
 }
 
 resource "aws_lb" "main" {
-  name               = var.alb_name
-  internal           = false
-  load_balancer_type = "application"
-  security_groups    = [data.aws_security_group.lb_sg.id]
-  subnets            = data.aws_subnets.public.ids
+  name                             = var.alb_name
+  internal                         = false
+  load_balancer_type               = "application"
+  security_groups                  = [data.aws_security_group.lb_sg.id]
+  subnets                          = data.aws_subnets.public.ids
   enable_cross_zone_load_balancing = true
 
   tags = {
@@ -146,10 +146,10 @@ resource "aws_lb" "main" {
 }
 
 resource "aws_lb_target_group" "main" {
-  name     = "${var.project_id}-tg"
-  port     = 80
-  protocol = "HTTP"
-  vpc_id   = data.aws_vpc.main.id
+  name                          = "${var.project_id}-tg"
+  port                          = 80
+  protocol                      = "HTTP"
+  vpc_id                        = data.aws_vpc.main.id
   load_balancing_algorithm_type = "round_robin"
 
   health_check {
