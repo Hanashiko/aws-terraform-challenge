@@ -24,9 +24,10 @@ data "aws_subnets" "public" {
     name   = "vpc-id"
     values = [data.aws_vpc.main.id]
   }
+
   filter {
-    name   = "cidr-block"
-    values = ["10.0.1.0/24", "10.0.3.0/24"]
+    name = "map-public-ip-on-launch"
+    values = ["true"]
   }
 }
 
@@ -136,6 +137,7 @@ resource "aws_lb" "main" {
   load_balancer_type = "application"
   security_groups    = [data.aws_security_group.lb_sg.id]
   subnets            = data.aws_subnets.public.ids
+  enable_cross_zone_load_balancing = true
 
   tags = {
     Terraform = "true"
@@ -148,6 +150,7 @@ resource "aws_lb_target_group" "main" {
   port     = 80
   protocol = "HTTP"
   vpc_id   = data.aws_vpc.main.id
+  load_balancing_algorithm_type = "round_robin"
 
   health_check {
     path                = "/"
