@@ -70,7 +70,7 @@ INSTANCE_ID=$(curl -s -H "X-aws-ec2-metadata-token: $TOKEN" \
 PRIVATE_IP=$(curl -s -H "X-aws-ec2-metadata-token: $TOKEN" \
   http://169.254.169.254/latest/meta-data/local-ipv4)
 
-echo "<html><body><h1>This message was generated on instance $INSTANCE_IP with the following IP: $PRIVATE_IP</h1></body></html>" \
+echo "<html><body><h1>This message was generated on instance $INSTANCE_ID with the following IP: $PRIVATE_IP</h1></body></html>" \
 > /var/www/html/index.html
 EOF
 }
